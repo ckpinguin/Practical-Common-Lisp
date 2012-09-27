@@ -2,6 +2,7 @@
 *\.lx32fsl
 *\.lx64fsl
 *\.fas
+*\.fasl
 *\.lib
 \#*
 \.\#*
