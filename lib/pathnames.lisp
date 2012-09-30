@@ -54,9 +54,6 @@
 	(directory wildcard :directories t)
 
 	#+clisp
-	(directory wildcard :directories-are-files nil)
-
-	#+clisp
 	(nconc
 	 (directory wildcard)
 	 (directory (clisp-subdirectories-wildcard wildcard)))
