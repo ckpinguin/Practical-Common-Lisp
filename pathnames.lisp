@@ -1,19 +1,4 @@
-(cl:in-package :common-lisp-user)
-
-(defpackage :ch.codehome.pathnames
-  (:use :common-lisp)
-  (:export
-   :list-directory
-   :file-exists-p
-   :directory-pathname-p
-   :file-pathname-p
-   :pathname-as-directory
-   :pathname-as-file
-   :walk-directory
-   :directory-p
-   :file-p))
-
-(in-package :ch.codehome.pathnames)
+(in-package #:ch.codehome.pathnames)
 
 (defun component-present-p (value)
   (and value (not (eql value :unspecific))))

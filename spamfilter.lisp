@@ -1,14 +1,4 @@
-(load "lib/pathnames.lisp")
-(load "lib/practical.lisp")
-(load "lib/asdf.lisp")
-(load "lib/cl-ppcre/cl-ppcre.asd")
-(asdf:operate 'asdf:load-op :cl-ppcre)
-
-
-;*** Package definition ***
-(defpackage :ch.codehome.spamfilterq
-  (:use :common-lisp :cl-ppcre :ch.codehome.pathnames :ch.codehome.practical))
-
+(in-package #:ch.codehome.spamfilter)
 
 ;*** Global vars ***
 (defparameter *max-ham-score* .4)

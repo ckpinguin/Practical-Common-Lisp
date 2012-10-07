@@ -1,20 +1,8 @@
-(cl:in-package :common-lisp-user)
-
-(require "lib/pathnames")
-
-(defpackage :ch.codehome.practical
-  (:use :common-lisp :ch.codehome.pathnames)
-  (:export
-   :with-gensyms
-   :nshuffle-vector
-   :shuffle-vector
-   :start-of-file))
-
 (in-package :ch.codehome.practical)
 
 (defmacro with-gensyms ((&rest names) &body body)
-  `(let ,(loop for n in names collect `(,n (gensym)))
-	 ,@body))
+  `(let ,(loop for n in names collect `(,n (make-symbol ,(string n))))
+     ,@body))
 
 (defmacro once-only ((&rest names) &body body)
   (let ((gensyms (loop for n in names collect (gensym))))
@@ -42,3 +30,18 @@
 	  (if (< read length)
 		  (subseq text 0 read)
 		  text))))
+
+(defun spliceable (value)
+  (if value (list value)))
+
+(defmacro ppme (form &environment env)
+  (progn
+    (write (macroexpand-1 form env)
+           :length nil
+           :level nil
+           :circle nil
+           :pretty t
+           :gensym nil
+           :right-margin 83
+           :case :downcase)
+    nil))
